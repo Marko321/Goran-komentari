@@ -1,3 +1,5 @@
+#Primer while petlje, ovo je ok
+
 def hhh(granica,korak):
     skup=[]
     i=0

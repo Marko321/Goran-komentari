@@ -8,11 +8,19 @@ class Ljudi(object):
         print ('Kandidat se zove:%s, pol:%s i ima %d godina.' %(self.ime,self.pol,self.godine))
 
 
+#Po PEP8 standardu ime klase pocinje velikim slovom
+class Osobine(Ljudi):
 
-class osobine(Ljudi):
     #Menjanjem redosleda funkcija opis menja se ispis Covek/Kandidat zbog nasledjivanja
+
+    #Ovo se zove redeklaracija promenljivih i nije cest primer u praksi
+    #Prva funkcija ovde je skroz overload-ovana drugom funkcijom tako da je nemoguce
+    #da se ona ikad izvrsi
+    #Python funkcije gleda po imenu i u jednoj klasi, nikad nebi trebalo da imas 2 funkcije koje se isto zovu
+    #Sto se tice nasledjivanja to je ok, skroz, cak i preporucljivo, naslediti i predefinisati funkciju ako
+    #ima potrebe za tim
     def opis(self):
-        super(osobine,self).opis() 
+        super(Osobine,self).opis()
                 
     def opis(self):
         print ('Covek se zove:%s, pol:%s i ima %d godina.' %(self.ime,self.pol,self.godine))
@@ -26,6 +34,6 @@ class osobine(Ljudi):
         else:
             print('%s ima gradju kosarkasa zbog visine od %d cm.' %(self.ime,self.visina))
 
-ja=osobine('Pera','muski',44,166)                  
+ja=Osobine('Pera','muski',44,166)
 ja.opis()
 ja.sport()

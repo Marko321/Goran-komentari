@@ -1,23 +1,28 @@
 class TvojaKancelarija(object):
     
     def __init__(self,kol_besa):
-        self.kol_besa=kol_besa
+        #Super da znas
+        #Python nema prava pristupa atributima u klasi ali po pep8 standardu se podrazumeva da
+        #ako promenljiva pocinje sa _ (underscore) to je privatna promenljiva
+        self._kol_besa=kol_besa
     
     def ispis(self,recenica):
         self.recenica=recenica
         print self.recenica + ' Takav je zivot.'
-        exit(0)
+        #Opet ista prica za exit, inace u web applikacijama exit() nesmes da imas :), oborices server
+        #exit(0)
         
     def opis(self):
         print'Imali ste problem na poslu, osteceni ste novom preraspodelom posla.'
         odgovor=raw_input('Da li biste se obratili tehnickom ili generalnom direktoru?')
         if 'teh' in odgovor:
-            dalje=Tehnicki(self.kol_besa)
+            dalje=Tehnicki(self._kol_besa)
             dalje.opis()
         else:
-            dalje=Generalni(self.kol_besa)
+            dalje=Generalni(self._kol_besa)
             dalje.opis()
-            
+
+
 class Cinkaros(TvojaKancelarija):
     
     def opis(self):
@@ -77,3 +82,6 @@ class Tehnicki(TvojaKancelarija):
             
 ja=TvojaKancelarija(4)
 ja.opis()
+
+#Generalno savet, jednu klasu u jedan fajl stavljaj, i probaj da import-ujes klase kao module
+#Ja cu sad napraviti Direktor modul.
